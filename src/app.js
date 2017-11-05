@@ -1,6 +1,11 @@
-import express from 'express'
+import { connectRouters, express } from './initializer/framework';
+import bodyParser from 'body-parser';
 
-const app = express()
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ type: 'application/json' }));
+connectRouters(app);
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
